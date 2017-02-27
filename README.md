@@ -1,9 +1,9 @@
-# Minimal development environment
+# array-lowercase
 
 <!--- Add more badges from shields.io when needed -->
-[![Under Development](https://img.shields.io/badge/under-development-orange.svg?style=flat-square)](https://github.com/r3Fuze/minimal-dev)
-[![Travis](https://img.shields.io/travis/r3Fuze/minimal-dev.svg?style=flat-square)](https://travis-ci.org/r3Fuze/minimal-dev)
-[![Codecov](https://img.shields.io/codecov/c/github/r3Fuze/minimal-dev.svg?style=flat-square)](https://codecov.io/gh/r3Fuze/minimal-dev)
+[![Under Development](https://img.shields.io/badge/under-development-orange.svg?style=flat-square)](https://github.com/r3Fuze/array-lowercase)
+[![Travis](https://img.shields.io/travis/r3Fuze/array-lowercase.svg?style=flat-square)](https://travis-ci.org/r3Fuze/array-lowercase)
+[![Codecov](https://img.shields.io/codecov/c/github/r3Fuze/array-lowercase.svg?style=flat-square)](https://codecov.io/gh/r3Fuze/array-lowercase)
 
 
 > Short project's overview (one paragraph) explaining what this project stands for. Using this boilerplate, three lines is a good length for briefly explaining this project's purpose while respecting the base layout.
