@@ -1,0 +1,21 @@
+language: node_js
+
+# test on latest node version
+node_js:
+    - "node"
+
+# cache yarn modules
+cache: yarn
+
+# run coveralls after test
+after_success:
+    #- "./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls"
+    - "npm run codecov"
+
+# send email notifications
+notifications:
+    email:
+        on_success: always
+        on_failure: always
+        recipients:
+            - r3fuze@gmail.com

@@ -1,0 +1,106 @@
+{
+  "name": "minimal-dev",
+  "version": "1.0.0",
+  "private": true,
+  "keywords": [
+    "minimal",
+    "development",
+    "environment"
+  ],
+  "description": "Minimal development environment",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/r3Fuze/minimal-dev"
+  },
+  "bugs": {
+    "url": "https://github.com/r3Fuze/minimal-dev/issues"
+  },
+  "author": "Morten Lindhardt <r3fuze@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "xo && nyc ava",
+    "dev": "xo && ava --watch --verbose",
+    "precommit": "xo && ava",
+    "build": "cross-env BABEL_ENV=production placeholder-build",
+    "report": "nyc report --reporter=html",
+    "commit": "git-cz",
+    "codecov": "nyc report --reporter=lcov && codecov"
+  },
+  "dependencies": {
+    "clone": "^2.1.0",
+    "codecov": "^1.0.1",
+    "unique-random-array": "^1.0.0"
+  },
+  "devDependencies": {
+    "ava": "^0.18.1",
+    "ava-spec": "^1.1.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-latest": "^6.22.0",
+    "chai": "^3.5.0",
+    "commitizen": "^2.9.6",
+    "coveralls": "^2.11.16",
+    "cross-env": "^3.1.4",
+    "cz-conventional-changelog": "^1.2.0",
+    "cz-conventional-changelog-lint": "^0.1.3",
+    "git-pre-commit": "^2.1.3",
+    "nyc": "^10.1.2",
+    "xo": "^0.17.1"
+  },
+  "babel": {
+    "presets": [
+      "latest"
+    ],
+    "plugins": [
+      "transform-runtime"
+    ],
+    "ignore": "test/**/*.test.js",
+    "env": {
+      "development": {
+        "sourceMaps": "inline"
+      }
+    }
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ]
+  },
+  "xo": {
+    "semicolon": false,
+    "space": 4,
+    "rules": {
+      "quotes": [
+        "error",
+        "double"
+      ],
+      "spaced-comment": "off",
+      "object-curly-spacing": "off",
+      "no-unused-expressions": "off",
+      "no-else-return": "off",
+      "import/prefer-default-export": "off",
+      "import/default": "off",
+      "ava/no-todo-test": "off",
+      "ava/no-skip-test": "off"
+    }
+  },
+  "pre-commit": [
+    "xo",
+    "ava"
+  ],
+  "nyc": {
+    "include": [
+      "src/**/*.js"
+    ],
+    "check-coverage": true,
+    "lines": 90,
+    "statements": 90,
+    "functions": 90,
+    "branches": 90
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
