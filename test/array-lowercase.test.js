@@ -98,8 +98,21 @@ describe("Module", it => {
             expect([]).to.not.respondTo("toLowerCase")
             lower.extend()
             expect([]).to.respondTo("toLowerCase")
+        })
+
+        it("should have working functions", () => {
+            expect(["a", "b"].isAllStrings()).to.be.true
+            expect(["a", 1].isAllStrings()).to.be.false
+
+            expect(["a", "b"].isLowerCase()).to.be.true
+            expect(["a", "B"].isLowerCase()).to.be.false
+
+            expect(["A", "B"].isUpperCase()).to.be.true
+            expect(["a", "B"].isUpperCase()).to.be.false
 
             expect(["a", "B"].toLowerCase()).to.eql(["a", "b"])
+
+            expect(["a", "B"].toUpperCase()).to.eql(["A", "B"])
         })
 
         it("should make arrays respond to all our functions", () => {

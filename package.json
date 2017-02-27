@@ -87,7 +87,7 @@
   },
   "pre-commit": [
     "xo",
-    "ava"
+    "nyc ava"
   ],
   "nyc": {
     "include": [
