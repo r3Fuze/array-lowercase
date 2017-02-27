@@ -1,39 +1,121 @@
 import {describe} from "ava-spec"
 import {expect} from "chai"
 
-import * as math from "../src/array-lowercase"
+import * as lower from "../src/array-lowercase"
 
-describe("Math module", it => {
+const PROTO_FUNCTIONS = [
+    "isAllStrings",
+    "isLowerCase",
+    "isUpperCase",
+    "toLowerCase",
+    "toUpperCase"
+]
+
+describe("Module", it => {
     it("should exist", () => {
-        expect(math).to.exist
+        expect(lower).to.not.be.undefined
     })
 
-    it("should have all it's functions", () => {
-        expect(math.add).to.exist
-        expect(math.add).to.be.a("function")
+    describe("isAllStrings()", it => {
+        it("should throw an error if the argument is not an Array", () => {
+            let fn = () => {
+                lower.isAllStrings("not array")
+            }
 
-        expect(math.subtract).to.exist
-        expect(math.subtract).to.be.a("function")
+            expect(fn).to.throw("Argument must be an Array")
+        })
 
-        expect(math.multiply).to.exist
-        expect(math.multiply).to.be.a("function")
-    })
-
-    describe(".add()", it => {
-        it("should return the sum of two numbers", () => {
-            expect(math.add(1, 3)).to.equal(4)
+        it("should return true an Array contains only Strings", () => {
+            expect(lower.isAllStrings(["a", "B"])).to.be.true
+            expect(lower.isAllStrings(["a", 1])).to.be.false
         })
     })
 
-    describe(".subtract()", it => {
-        it("should return the difference of two numbers", () => {
-            expect(math.subtract(42, 40)).to.equal(2)
+    describe("isLowerCase()", it => {
+        it("should throw an error if the Array contains non String elements", () => {
+            let fn = () => {
+                lower.isLowerCase(["a", 1])
+            }
+
+            expect(fn).to.throw("Array contains non String elements")
+        })
+
+        it("should return true if all strings of an Array is lowercase", () => {
+            expect(lower.isLowerCase(["a", "b"])).to.be.true
+            expect(lower.isLowerCase(["a", "B"])).to.be.false
         })
     })
 
-    describe(".multiply()", it => {
-        it("should return the first number multiplied by the second number", () => {
-            expect(math.multiply(12, 10)).to.equal(120)
+    describe("isUpperCase()", it => {
+        it("should throw an error if the Array contains non String elements", () => {
+            let fn = () => {
+                lower.isUpperCase(["A", 1])
+            }
+
+            expect(fn).to.throw("Array contains non String elements")
+        })
+
+        it("should return true if all strings of an Array is uppercase", () => {
+            expect(lower.isUpperCase(["A", "B"])).to.be.true
+            expect(lower.isUpperCase(["a", "B"])).to.be.false
+        })
+    })
+
+    describe("toLowerCase()", it => {
+        it("should throw an error if the Array contains non String elements", () => {
+            let fn = () => {
+                lower.toLowerCase(["A", 1])
+            }
+
+            expect(fn).to.throw("Array contains non String elements")
+        })
+
+        it("should return a new Array with all Strings in lowercase", () => {
+            let lowerCaseArray = lower.toLowerCase(["a", "B"])
+
+            expect(lower.isLowerCase(lowerCaseArray)).to.be.true
+        })
+    })
+
+    describe("toUpperCase()", it => {
+        it("should throw an error if the Array contains non String elements", () => {
+            let fn = () => {
+                lower.toUpperCase(["A", 1])
+            }
+
+            expect(fn).to.throw("Array contains non String elements")
+        })
+
+        it("should return a new Array with all Strings in uppercase", () => {
+            let upperCaseArray = lower.toUpperCase(["a", "B"])
+
+            expect(lower.isUpperCase(upperCaseArray)).to.be.true
+        })
+    })
+
+    describe("extend()", it => {
+        it("should extend the Array prototype when called", () => {
+            expect([]).to.not.respondTo("toLowerCase")
+            lower.extend()
+            expect([]).to.respondTo("toLowerCase")
+
+            expect(["a", "B"].toLowerCase()).to.eql(["a", "b"])
+        })
+
+        it("should make arrays respond to all our functions", () => {
+            for (let fn of PROTO_FUNCTIONS) {
+                expect([]).to.respondTo(fn)
+            }
+        })
+    })
+
+    describe("checkArrayForStrings()", it => {
+        it("should throw an error if the Array contains non String elements", () => {
+            let fn = () => {
+                lower.checkArrayForStrings(["a", 1])
+            }
+
+            expect(fn).to.throw("Array contains non String elements")
         })
     })
 })
