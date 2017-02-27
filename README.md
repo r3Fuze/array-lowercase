@@ -1,5 +1,7 @@
 # array-lowercase
 
+# TL;DR You probably shouldn't use this yet
+
 <!--- Add more badges from shields.io when needed -->
 [![Under Development](https://img.shields.io/badge/under-development-orange.svg?style=flat-square)](https://github.com/r3Fuze/array-lowercase)
 [![Travis](https://img.shields.io/travis/r3Fuze/array-lowercase.svg?style=flat-square)](https://travis-ci.org/r3Fuze/array-lowercase)
