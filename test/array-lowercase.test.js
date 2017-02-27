@@ -1,7 +1,7 @@
 import {describe} from "ava-spec"
 import {expect} from "chai"
 
-import * as math from "../src/math"
+import * as math from "../src/array-lowercase"
 
 describe("Math module", it => {
     it("should exist", () => {

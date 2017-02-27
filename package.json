@@ -1,12 +1,11 @@
 {
   "name": "array-lowercase",
   "version": "1.0.0",
-  "private": true,
   "keywords": [
     "array"
   ],
   "description": "Convert array of strings to lowercase",
-  "main": "index.js",
+  "main": "lib/array-lowercase.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/r3Fuze/array-lowercase"
@@ -19,8 +18,9 @@
   "scripts": {
     "test": "xo && nyc ava",
     "dev": "xo && ava --watch --verbose",
+    "prepublish": "npm run build",
     "precommit": "xo && ava",
-    "build": "cross-env BABEL_ENV=production placeholder-build",
+    "build": "babel -d lib/ src/",
     "report": "nyc report --reporter=html",
     "commit": "git-cz",
     "codecov": "nyc report --reporter=lcov && codecov"
@@ -31,8 +31,10 @@
   "devDependencies": {
     "ava": "^0.18.1",
     "ava-spec": "^1.1.0",
+    "babel-cli": "^6.23.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-latest": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
     "chai": "^3.5.0",
     "commitizen": "^2.9.6",
     "coveralls": "^2.11.16",
@@ -45,7 +47,8 @@
   },
   "babel": {
     "presets": [
-      "latest"
+      "es2015",
+      "stage-0"
     ],
     "plugins": [
       "transform-runtime"
